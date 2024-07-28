@@ -5,7 +5,7 @@ export const FETCH_EXPENSES = 'FETCH_EXPENSES';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
-const API_URL =import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const addExpense = (expense) => async dispatch => {
   try {
