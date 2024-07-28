@@ -1,0 +1,28 @@
+.sidebar {
+    width: 250px; /* Adjust width as needed */
+    height: 100vh; /* Ensure sidebar takes full height */
+    position: fixed; /* Fixed positioning to keep it always visible */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Sidebar background color */
+    color: white; /* Text color */
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+  }
+  
+  .sidebar a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Text color for links */
+    display: block; /* Block-level display for links */
+    padding: 10px 0; /* Padding for each link */
+  }
+  
+  .sidebar a:hover {
+    background-color: #555; /* Background color on hover */
+  }
+  
+  .sidebar .active {
+    background-color: #555; /* Background color for active link */
+    font-weight: bold; /* Bold font weight for active link */
+  }
+  
