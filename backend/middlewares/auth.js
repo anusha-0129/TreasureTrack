@@ -4,15 +4,12 @@ dotenv.config();
 
 const verifyUser = async (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
+    const token = req.cookies.token;
     if (!token) {
       return res.status(401).json({ status: false, message: "No token, authorization denied" });
     }
-
     const decoded = jwt.verify(token, process.env.JWT_KEY);
-    req.user = decoded;
+    req.user = decoded; 
     next();
   } catch (err) {
     console.error(err.message);
