@@ -31,6 +31,7 @@ export const login = (email, password) => async dispatch => {
       password,
     }, { withCredentials: true });
     if (response.data.status) {
+      localStorage.setItem('token', response.data.token);
       dispatch({ type: LOGIN_SUCCESS });
     } else {
       dispatch({ type: LOGIN_FAILURE });
@@ -45,6 +46,7 @@ export const logout = () => async dispatch => {
   try {
     const response = await Axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
     if (response.data.status) {
+      localStorage.removeItem('token');
       dispatch({ type: LOGOUT_SUCCESS });
     }
   } catch (error) {

@@ -7,7 +7,7 @@ import { authRouter } from './routes/auth.js';
 import { incomeRouter } from './routes/income.js';
 import { expenseRouter } from './routes/expense.js';
 import voiceCommandRouter from './routes/voiceCommand.js';
-
+import verifyUser from './middlewares/auth.js'
 dotenv.config();
 
 const app = express();
@@ -22,8 +22,8 @@ app.use(cors({
 app.use(cookieParser());
 database();
 app.use('/auth', authRouter);
-app.use('/incomes', incomeRouter);
-app.use('/expenses', expenseRouter);
+app.use('/incomes',verifyUser, incomeRouter);
+app.use('/expenses',verifyUser, expenseRouter);
 app.use(voiceCommandRouter);
 
 app.listen(PORT, () => {
