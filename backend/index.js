@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:5173","https://treasuretrack.onrender.com"],
+  origin: ["http://localhost:5173"],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true
 }));
