@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Sidebar from './components/Sidebar';
@@ -14,7 +13,6 @@ import Logout from './components/Logout';
 import Currency from './components/Currency';
 import VoiceCommands from './components/VoiceCommands';
 import { useSelector } from 'react-redux';
-import { persistor } from './components/stores/store'
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
