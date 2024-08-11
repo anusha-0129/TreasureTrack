@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <PersistGate loading={null} persistor={persistor}>
+       
           <ToastContainer />
           <div className="app">
             {isAuthenticated && <Sidebar />}
@@ -37,7 +37,6 @@ function App() {
               </Routes>
             </div>
           </div>
-        </PersistGate>
       </BrowserRouter>
     </>
   );
