@@ -1,7 +1,8 @@
 import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../actions/authAction';
 
+const token = localStorage.getItem('token');
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: !!token, 
 };
 
 const authReducer = (state = initialState, action) => {

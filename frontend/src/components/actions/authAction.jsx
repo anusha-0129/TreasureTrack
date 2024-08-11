@@ -12,7 +12,7 @@ export const signup = (username, email, password) => async dispatch => {
       username,
       email,
       password,
-    }, { withCredentials: true });
+    });
     if (response.data.status) {
       dispatch({ type: SIGNUP_SUCCESS });
     } else {
@@ -29,8 +29,11 @@ export const login = (email, password) => async dispatch => {
     const response = await Axios.post(`${API_URL}/auth/login`, {
       email,
       password,
-    }, { withCredentials: true });
+    });
     if (response.data.status) {
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      Axios.defaults.headers.common['Authorization'] = token;
       dispatch({ type: LOGIN_SUCCESS });
     } else {
       dispatch({ type: LOGIN_FAILURE });
@@ -43,10 +46,9 @@ export const login = (email, password) => async dispatch => {
 
 export const logout = () => async dispatch => {
   try {
-    const response = await Axios.get(`${API_URL}/auth/logout`, { withCredentials: true });
-    if (response.data.status) {
-      dispatch({ type: LOGOUT_SUCCESS });
-    }
+    localStorage.removeItem('token');
+    delete Axios.defaults.headers.common['Authorization'];
+    dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     console.log(error);
   }
